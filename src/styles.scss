@@ -18,6 +18,7 @@ h1 {
 
 h2 {
   font-size: 40px;
+  margin-bottom: 25px;
 }
 
 h1.is-bold, h2.is-bold {
@@ -26,6 +27,7 @@ h1.is-bold, h2.is-bold {
 }
 
 .btn {
+  font-family: inherit;
   display: inline-flex;
   padding: 12px 22px;
   background: rgba(black, 0.7);
@@ -38,6 +40,8 @@ h1.is-bold, h2.is-bold {
   align-items: center;
 
   border-radius: 4px;
+  border: none;
+
 
   cursor: pointer;
 
@@ -57,6 +61,10 @@ h1.is-bold, h2.is-bold {
   display: flex;
   margin-top: 20px;
 
+  .align-end {
+    margin-left: auto;
+  }
+
   &.btns-centered {
     justify-content: center;
   }
@@ -70,4 +78,37 @@ h1.is-bold, h2.is-bold {
 .has-blurred-white-bg {
   background: rgba(white, 0.5);
   backdrop-filter: blur(20px);
+}
+
+.textbox, .textarea {
+  display: block;
+  font-size: 18px;
+  font-family: inherit;
+
+  border: 2px solid rgba(black, 0.3);
+  border-radius: 4px;
+
+  margin-bottom: 20px;
+
+  background: rgba(white, 0.9);
+  padding: 8px 10px;
+  width: 100%;
+
+  &:hover {
+    background: rgba(white, 0.95);
+  }
+
+  &:focus {
+    background: white;
+    outline: none;
+  }
+
+  &:hover, &:focus {
+    border-color: rgba(black, 0.42);
+  }
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
 }
