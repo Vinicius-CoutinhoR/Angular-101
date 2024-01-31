@@ -1,1 +1,73 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Material+Icons+Outlined');
+html {
+  font-family: 'Inter', 'sans-serif';
+}
+
+html, body {
+  height: 100%;
+
+  margin: 0;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+h1.is-bold, h2.is-bold {
+  font-weight: bold;
+  letter-spacing: -2px;
+}
+
+.btn {
+  display: inline-flex;
+  padding: 12px 22px;
+  background: rgba(black, 0.7);
+
+  text-decoration: none;
+
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  align-items: center;
+
+  border-radius: 4px;
+
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(black, 0.78);
+    backdrop-filter: blur(2px);
+  }
+
+  &:active {
+    background: rgba(black, 0.85);
+  }
+
+
+}
+
+.btns-container {
+  display: flex;
+  margin-top: 20px;
+
+  &.btns-centered {
+    justify-content: center;
+  }
+}
+
+.container {
+  max-width: 850px;
+  margin: auto;
+}
+
+.has-blurred-white-bg {
+  background: rgba(white, 0.5);
+  backdrop-filter: blur(20px);
+}
