@@ -3,7 +3,7 @@ export class Note {
 
   id: string;
   title: string;
-  content: string;
+  content?: string;
 
   constructor(
     title: string,

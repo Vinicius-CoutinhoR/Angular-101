@@ -17,8 +17,8 @@ export class NoteService {
     return this.notes;
   }
 
-  getNote(id: string): any {
-    return this.notes.find(n => n.id === id );
+  getNote(id: string | null): Note {
+    return this.notes.find(n => n.id === id )!;
   }
 
   addNote(note: Note): void {
@@ -26,7 +26,7 @@ export class NoteService {
   }
 
   updateNote(id: string, updatedFields: Partial<Note>): void {
-    const note = this.getNote(id);
+    const note: Note | undefined = this.getNote(id);
     Object.assign(note, updatedFields);
   }
 

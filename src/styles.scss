@@ -58,6 +58,7 @@ h1.is-bold, h2.is-bold {
 }
 
 .btns-container {
+  gap: 12px;
   display: flex;
   margin-top: 20px;
 
@@ -114,4 +115,8 @@ h1.is-bold, h2.is-bold {
 .textarea {
   resize: vertical;
   min-height: 100px;
+}
+
+a {
+  text-decoration: none;
 }

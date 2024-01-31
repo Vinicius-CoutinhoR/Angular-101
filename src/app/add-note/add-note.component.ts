@@ -11,13 +11,15 @@ import {error} from "@angular/compiler-cli/src/transformers/util";
   styleUrl: './add-note.component.scss'
 })
 export class AddNoteComponent implements OnInit {
+
+  showValidationErrors: boolean = false;
   constructor(private noteService: NoteService, private router: Router) { }
 
   ngOnInit() { }
 
-  onFormSubmit(form: NgForm) {
+  onFormSubmit(form: NgForm): any {
     if (form.invalid) {
-      return alert("Invalid form!");
+      return this.showValidationErrors = true;
     }
 
     const note: Note = new Note(form.value.title, form.value.content);

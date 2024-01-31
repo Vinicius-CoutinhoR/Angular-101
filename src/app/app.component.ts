@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RouterOutlet} from "@angular/router";
 import {animate, group, query, style, transition, trigger} from "@angular/animations";
 
@@ -82,13 +82,18 @@ import {animate, group, query, style, transition, trigger} from "@angular/animat
     ])
   ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   prepareRoute(outlet: RouterOutlet) {
     if (outlet.isActivated) {
       return outlet.activatedRouteData['tab'];
     }
     return undefined;
   }
+
+  ngOnInit() {
+
+  }
+
 
   protected readonly style = style;
 }
