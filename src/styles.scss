@@ -88,10 +88,9 @@ h1.is-bold, h2.is-bold {
   border: 2px solid rgba(black, 0.3);
   border-radius: 4px;
 
-  margin-bottom: 20px;
-
   background: rgba(white, 0.9);
   padding: 8px 10px;
+
   width: 100%;
 
   &:hover {
@@ -106,6 +105,10 @@ h1.is-bold, h2.is-bold {
   &:hover, &:focus {
     border-color: rgba(black, 0.42);
   }
+}
+
+.form-field {
+  margin-bottom: 20px;
 }
 
 .textarea {
