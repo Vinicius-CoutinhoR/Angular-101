@@ -3,64 +3,11 @@
   overflow-y: auto;
 }
 
-.todo-item {
-  display: flex;
-  align-items: center;
+.add-btn i {
+  margin-right: 5px;
+  margin-left: -3px;
+}
 
-  background-color: rgba(black, 0.6);
+.todo-btn {
   border-radius: 25px;
-  margin-bottom: 15px;
-
-  padding: 10px 12px;
-
-  cursor: pointer;
-}
-
-.todo-text {
-  color: rgba(white, 0.88);
-}
-
-.check-box {
-  display: flex;
-  padding: 4px;
-  border: 2px solid rgba(white, 0.35);
-  border-radius: 50%;
-  margin-right: 15px;
-
-  i {
-    opacity: 0;
-    font-size: 18px;
-  }
-}
-
-
-.todo-item:hover {
-  .todo-text {
-    color: white;
-  }
-  .check-box {
-    border-color: transparent;
-    background-color: rgba(white, 0.35);
-  }
-
-}
-
-.todo-item.completed {
-  .todo-text {
-    color: rgba(white, 0.68);
-  }
-
-  .check-box {
-    background: rgb(9, 218, 89);
-    border-color: transparent;
-
-    i {
-      opacity: 1;
-    }
-  }
-}
-
-.todo-text,
-.check-box {
-  transition: 0.15s;
 }

@@ -11,7 +11,8 @@ export class NoteService {
     new Note('Test title 123', 'Test Content! 123')
   ];
 
-  constructor() { }
+  constructor() {
+  }
 
   getNotes() {
     return this.notes;
