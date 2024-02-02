@@ -18,8 +18,8 @@ export class TodoService {
     return this.todos
   }
 
-  getTodo(id: string) {
-    return this.todos.find(t => t.id === id);
+  getTodo(id: string | null) {
+    return this.todos.find(t => t.id === id)!;
   }
 
   addTodo(todo: Todo) {
@@ -34,8 +34,10 @@ export class TodoService {
   deleteTodo(id: string) {
     const index = this.todos.findIndex(t => t.id === id);
     if (index !== -1) {
+      console.log('deletou');
       return this.todos.splice(index, 1);
     }
+    console.log('caiu no undefined index is: ' + index);
     return undefined;
   }
 }
