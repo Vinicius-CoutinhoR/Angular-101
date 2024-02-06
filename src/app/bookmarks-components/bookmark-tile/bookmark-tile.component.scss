@@ -43,3 +43,22 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+.tile-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 40px;
+  width: 40px;
+}
+
+.tile-icon.fallback {
+  color: #f5f7f8;
+  background: rgba(45, 48, 53, 0.7);
+  border-radius: 50%;
+
+  font-size: 20px;
+  font-weight: 600;
+}
+
