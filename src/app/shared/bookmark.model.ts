@@ -2,8 +2,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 export class Bookmark {
   id: string;
-  name: string;
-  url: URL;
+  name: string = '';
+  url: URL = new URL('https://angular.io/');
 
   constructor(
     name: string,
@@ -11,6 +11,10 @@ export class Bookmark {
   ) {
     this.id = uuidv4();
     this.url = new URL(url);
+
+    if (!name) {
+      name = this.url.hostname
+    }
     this.name = name;
   }
 }
