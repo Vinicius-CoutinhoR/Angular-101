@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
-import {Note} from "../shared/note.model";
-import {NoteService} from "../shared/note.service";
+import {Note} from "../../shared/note.model";
+import {NoteService} from "../../shared/note.service";
 import {Router} from "@angular/router";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 
