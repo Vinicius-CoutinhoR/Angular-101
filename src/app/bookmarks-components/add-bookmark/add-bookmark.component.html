@@ -1,0 +1,25 @@
+<div class="add-bookmark-wrapper container has-blurred-white-bg">
+  <h2 class="is-bold">Add Bookmark</h2>
+
+  <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
+    <div class="form-field">
+      <label class="form-label">Name</label>
+      <input type="text" ngModel #nameField="ngModel" name="name" class="textbox" placeholder="e.g. Wikipedia">
+    </div>
+
+    <div class="form-field">
+      <label class="form-label">URL</label>
+      <input type="text" ngModel #urlField="ngModel" name="url" class="textbox" placeholder="e.g. https://wikipedia.org" required>
+      <ng-container *ngIf="urlField.invalid">
+        <p *ngIf="urlField.errors?.['required']">URL is required.</p>
+      </ng-container>
+    </div>
+
+
+
+    <div class="btns-container">
+      <a routerLink="../" class="btn">Cancel</a>
+      <button class="btn align-end">Create Bookmark</button>
+    </div>
+  </form>
+</div>
