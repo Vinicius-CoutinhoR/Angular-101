@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {TodoService} from "../shared/todo.service";
-import {Todo} from "../shared/todo.model";
+import {TodoService} from "../../shared/todo.service";
+import {Todo} from "../../shared/todo.model";
 import {Router} from "@angular/router";
 import {animate, style, transition, trigger} from "@angular/animations";
 
