@@ -7,17 +7,20 @@ import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TabsComponent } from './tabs/tabs.component';
-import { BookmarksComponent } from './bookmarks/bookmarks.component';
-import { TodosComponent } from './todos/todos.component';
-import { NotesComponent } from './notes/notes.component';
-import { BookmarkTileComponent } from './bookmark-tile/bookmark-tile.component';
+import { BookmarksComponent } from './bookmarks-components/bookmarks/bookmarks.component';
+import { TodosComponent } from './todos-components/todos/todos.component';
+import { NotesComponent } from './notes-components/notes/notes.component';
+import { BookmarkTileComponent } from './bookmarks-components/bookmark-tile/bookmark-tile.component';
 
-import { AddNoteComponent } from './add-note/add-note.component';
-import { NoteCardComponent } from './note-card/note-card.component';
-import { EditNoteComponent } from './edit-note/edit-note.component';
-import { TodoItemComponent } from './todo-item/todo-item.component';
-import { AddTodoComponent } from './add-todo/add-todo.component';
-import { EditTodoComponent } from './edit-todo/edit-todo.component';
+import { AddNoteComponent } from './notes-components/add-note/add-note.component';
+import { NoteCardComponent } from './notes-components/note-card/note-card.component';
+import { EditNoteComponent } from './notes-components/edit-note/edit-note.component';
+import { TodoItemComponent } from './todos-components/todo-item/todo-item.component';
+import { AddTodoComponent } from './todos-components/add-todo/add-todo.component';
+import { EditTodoComponent } from './todos-components/edit-todo/edit-todo.component';
+import { AddBookmarkComponent } from './bookmarks-components/add-bookmark/add-bookmark.component';
+import { ManageBookmarksComponent } from './bookmarks-components/manage-bookmarks/manage-bookmarks.component';
+import { EditBookmarkComponent } from './bookmarks-components/edit-bookmark/edit-bookmark.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { EditTodoComponent } from './edit-todo/edit-todo.component';
     EditNoteComponent,
     TodoItemComponent,
     AddTodoComponent,
-    EditTodoComponent
+    EditTodoComponent,
+    AddBookmarkComponent,
+    ManageBookmarksComponent,
+    EditBookmarkComponent
   ],
   imports: [
     BrowserModule,
