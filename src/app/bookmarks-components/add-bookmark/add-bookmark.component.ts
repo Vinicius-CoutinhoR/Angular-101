@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
-import {BookmarkService} from "../../shared/bookmark.service";
-import {Bookmark} from "../../shared/bookmark.model";
+import {BookmarkService} from "../../shared/service/bookmark.service";
+import {Bookmark} from "../../shared/model/bookmark.model";
 import {Router} from "@angular/router";
 
 @Component({

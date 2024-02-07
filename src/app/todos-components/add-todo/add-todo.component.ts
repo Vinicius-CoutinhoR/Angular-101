@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
-import {Note} from "../../shared/note.model";
-import {TodoService} from "../../shared/todo.service";
-import {Todo} from "../../shared/todo.model";
+import {Note} from "../../shared/model/note.model";
+import {TodoService} from "../../shared/service/todo.service";
+import {Todo} from "../../shared/model/todo.model";
 import {Router} from "@angular/router";
 
 @Component({
