@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
-import {NoteService} from "../../shared/note.service";
+import {NoteService} from "../../shared/service/note.service";
 import {NgForm} from "@angular/forms";
-import {Note} from "../../shared/note.model";
+import {Note} from "../../shared/model/note.model";
 
 @Component({
   selector: 'app-edit-note',
