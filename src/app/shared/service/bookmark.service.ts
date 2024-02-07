@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Bookmark} from "./bookmark.model";
+import {Bookmark} from "../model/bookmark.model";
 
 @Injectable({
   providedIn: 'root'

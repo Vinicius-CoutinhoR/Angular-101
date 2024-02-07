@@ -12,6 +12,4 @@ export class Todo {
     this.id = uuidv4();
     this.text = text;
   }
-
-
 }
