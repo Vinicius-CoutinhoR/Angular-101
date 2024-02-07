@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {BookmarkService} from "../../shared/bookmark.service";
-import {Bookmark} from "../../shared/bookmark.model";
+import {BookmarkService} from "../../shared/service/bookmark.service";
+import {Bookmark} from "../../shared/model/bookmark.model";
 
 @Component({
   selector: 'app-bookmarks',

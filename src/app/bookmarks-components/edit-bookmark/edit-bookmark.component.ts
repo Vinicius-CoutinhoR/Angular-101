@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {BookmarkService} from "../../shared/bookmark.service";
-import {Bookmark} from "../../shared/bookmark.model";
+import {BookmarkService} from "../../shared/service/bookmark.service";
+import {Bookmark} from "../../shared/model/bookmark.model";
 import {ActivatedRoute, ParamMap, Route, Router} from "@angular/router";
 import {NgForm} from "@angular/forms";
 import {relativeFrom} from "@angular/compiler-cli";
+import {NotificationService} from "../../shared/service/notification.service";
 
 @Component({
   selector: 'app-edit-bookmark',
@@ -14,10 +15,12 @@ export class EditBookmarkComponent implements OnInit {
 
   bookmark: Bookmark = new Bookmark('','https://angular.io/');
 
-  constructor(private bookmarkService: BookmarkService,
-              private route: ActivatedRoute,
-              private router: Router) {
-  }
+  constructor(
+    private bookmarkService: BookmarkService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private notificationService: NotificationService
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
@@ -33,13 +36,12 @@ export class EditBookmarkComponent implements OnInit {
       url: new URL(url)
     });
 
+    this.notificationService.show('Bookmark updated!');
   }
 
   delete(): void{
     this.bookmarkService.deleteBookmark(this.bookmark.id);
     this.router.navigate(['../'], { relativeTo: this.route })
   }
-
-
 
 }
