@@ -1,15 +1,31 @@
-import {Injectable } from '@angular/core';
+import {Injectable, OnDestroy} from '@angular/core';
 import {Note} from "../model/note.model";
+import {fromEvent, Subscription} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
-export class NoteService {
+export class NoteService implements OnDestroy {
 
   notes: Note[] = [];
 
+  storageListenSub: Subscription;
+
   constructor() {
     this.loadState();
+
+    this.storageListenSub = fromEvent<StorageEvent>(window, 'storage')
+      .subscribe((event: StorageEvent): void => {
+        if (event.key === 'notes') {
+          this.loadState();
+        }
+      });
+  }
+
+  ngOnDestroy() {
+    if (this.storageListenSub) {
+      this.storageListenSub.unsubscribe();
+    }
   }
 
   getNotes(): Note[] {
@@ -45,8 +61,13 @@ export class NoteService {
   }
 
   loadState(): void {
-    const savedNotes: string | null = localStorage.getItem('notes');
-    this.notes = savedNotes ? JSON.parse(savedNotes) : [];
+    try {
+      const notesInStorage = JSON.parse(localStorage.getItem('notes') || '{}');
+      this.notes.length = 0;
+      this.notes.push(...notesInStorage);
+    } catch (e) {
+      console.log("There's an error retrieving the notes from the local storage!");
+    }
   }
 
 }

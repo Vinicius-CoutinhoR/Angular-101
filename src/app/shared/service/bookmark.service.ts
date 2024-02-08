@@ -1,15 +1,31 @@
-import { Injectable } from '@angular/core';
+import {Injectable, OnDestroy} from '@angular/core';
 import {Bookmark} from "../model/bookmark.model";
+import {fromEvent, Subscription} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
-export class BookmarkService {
+export class BookmarkService implements OnDestroy {
 
   bookmarks: Bookmark[] = [];
 
+  storageListenSub: Subscription;
+
   constructor() {
     this.loadState();
+
+    this.storageListenSub = fromEvent<StorageEvent>(window, 'storage')
+      .subscribe((event: StorageEvent): void => {
+        if (event.key === 'bookmarks') {
+          this.loadState();
+        }
+      });
+  }
+
+  ngOnDestroy() {
+    if (this.storageListenSub) {
+      this.storageListenSub.unsubscribe();
+    }
   }
 
   getBookmarks(): Bookmark[] {
@@ -45,7 +61,19 @@ export class BookmarkService {
   }
 
   loadState(): void {
-    const savedBookmarks: string | null = localStorage.getItem('bookmarks');
-    this.bookmarks = savedBookmarks ? JSON.parse(savedBookmarks) : [];
+    try {
+      const bookmarksInStorage = JSON.parse(localStorage.getItem('bookmarks')
+        || '{}', (key: string, value): URL | undefined => {
+        if (key === 'url') {
+          return new URL(value);
+        }
+        return value;
+      });
+
+      this.bookmarks.length = 0;
+      this.bookmarks.push(...bookmarksInStorage);
+    } catch (e) {
+      console.log("There's an error retrieving the bookmarks from the local storage!");
+    }
   }
 }
