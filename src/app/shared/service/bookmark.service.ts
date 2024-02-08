@@ -6,37 +6,46 @@ import {Bookmark} from "../model/bookmark.model";
 })
 export class BookmarkService {
 
-  bookmarks: Bookmark[] = [
-    new Bookmark('Wikipedia', 'http://www.wikipedia.org'),
-    new Bookmark('Google', 'http://www.google.com'),
-    new Bookmark('Amazon', 'http://www.amazon.com'),
-    new Bookmark('Yahoo Japan', 'http://www.yahoo.co.jp')
-  ];
+  bookmarks: Bookmark[] = [];
 
-  constructor() { }
+  constructor() {
+    this.loadState();
+  }
 
-  getBookmarks() {
+  getBookmarks(): Bookmark[] {
     return this.bookmarks
   }
 
-  getBookmark(id: string) {
+  getBookmark(id: string): Bookmark {
     return this.bookmarks.find(b => b.id === id)!;
   }
 
-  addBookmark(bookmark: Bookmark) {
+  addBookmark(bookmark: Bookmark): void {
     this.bookmarks.push(bookmark);
+    this.saveState();
   }
 
-  updateBookmark(id: string, updatedFields: Partial<Bookmark>) {
-    const bookmark = this.getBookmark(id);
+  updateBookmark(id: string, updatedFields: Partial<Bookmark>): void {
+    const bookmark: Bookmark = this.getBookmark(id);
     Object.assign(bookmark, updatedFields);
+
+    this.saveState();
   }
 
   deleteBookmark(id: string): void {
-    const bookmarkIndex = this.bookmarks.findIndex(b => b.id === id)!;
+    const bookmarkIndex: number = this.bookmarks.findIndex(b => b.id === id)!;
     if (bookmarkIndex !== -1) {
       this.bookmarks.splice(bookmarkIndex, 1);
+      this.saveState();
     }
   }
 
+  saveState(): void {
+    localStorage.setItem('bookmarks', JSON.stringify(this.bookmarks));
+  }
+
+  loadState(): void {
+    const savedBookmarks: string | null = localStorage.getItem('bookmarks');
+    this.bookmarks = savedBookmarks ? JSON.parse(savedBookmarks) : [];
+  }
 }

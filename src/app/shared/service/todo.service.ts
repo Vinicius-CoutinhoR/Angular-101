@@ -6,38 +6,46 @@ import {Todo} from "../model/todo.model";
 })
 export class TodoService {
 
-  todos: Todo[] = [
-    new Todo('This is a test!'),
-    new Todo('Hey!')
-  ];
+  todos: Todo[] = [];
 
   constructor() {
+    this.loadState();
   }
 
-  getTodos() {
-    return this.todos
+  getTodos(): Todo[] {
+    return this.todos;
   }
 
-  getTodo(id: string | null) {
+  getTodo(id: string | null): Todo {
     return this.todos.find(t => t.id === id)!;
   }
 
-  addTodo(todo: Todo) {
+  addTodo(todo: Todo): void {
     this.todos.push(todo);
+    this.saveState();
   }
 
-  updateTodo(id: string, updatedTodoFields: Partial<Todo>) {
-    const todo = this.getTodo(id)!;
+  updateTodo(id: string, updatedTodoFields: Partial<Todo>): void {
+    const todo: Todo = this.getTodo(id)!;
     Object.assign(todo, updatedTodoFields);
+
+    this.saveState();
   }
 
-  deleteTodo(id: string) {
-    const index = this.todos.findIndex(t => t.id === id);
+  deleteTodo(id: string): void {
+    const index: number = this.todos.findIndex(t => t.id === id);
     if (index !== -1) {
-      console.log('deletou');
-      return this.todos.splice(index, 1);
+      this.todos.splice(index, 1);
+      this.saveState();
     }
-    console.log('caiu no undefined index is: ' + index);
-    return undefined;
+  }
+
+  saveState(): void {
+    localStorage.setItem('todos', JSON.stringify(this.todos));
+  }
+
+  loadState(): void {
+    const savedTodos: string | null = localStorage.getItem('todos');
+    this.todos = savedTodos ? JSON.parse(savedTodos) : [];
   }
 }
