@@ -4,8 +4,22 @@
   flex-direction: column;
   height: 100%;
   overflow: hidden;
+}
+
+.bg-img {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  object-fit: cover;
+  filter: blur(4px);
+  transform: scale(1.02);
 
 
+  //
+  //background-image: url("https://source.unsplash.com/random/1920x1080");
+  //background-size: cover;
+  //filter: blur(4px);
 }
 
 .app-wrapper::before {
@@ -15,15 +29,6 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: -1;
-  height: 102%;
-  width: 101%;
-  margin: -4px;
-
-  background-image: url("https://source.unsplash.com/random/1920x1080");
-
-  background-size: cover;
-  filter: blur(4px);
 }
 
 .top-section {
@@ -58,4 +63,24 @@
   app-tabs {
     margin: auto;
   }
+}
+
+.change-bg-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+
+  background: rgba(black, 0.1);
+  color: rgba(white, 0.7);
+
+  &:hover {
+    background: rgba(black, 0.3);
+    color: white;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
 }

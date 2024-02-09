@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {RouterOutlet} from "@angular/router";
-import {animate, group, query, style, transition, trigger} from "@angular/animations";
+import { Component, OnInit } from '@angular/core';
+import { RouterOutlet } from "@angular/router";
+import { animate, group, query, style, transition, trigger } from "@angular/animations";
 
 @Component({
   selector: 'app-root',
@@ -83,6 +83,8 @@ import {animate, group, query, style, transition, trigger} from "@angular/animat
   ]
 })
 export class AppComponent implements OnInit {
+
+  bg: string = 'https://source.unsplash.com/random/1920x1080'
   prepareRoute(outlet: RouterOutlet) {
     if (outlet.isActivated) {
       return outlet.activatedRouteData['tab'];
@@ -96,4 +98,12 @@ export class AppComponent implements OnInit {
 
 
   protected readonly style = style;
+
+  async changeBGImage(): Promise<void> {
+    const result: Response = await fetch('https://source.unsplash.com/random/1920x1080', {
+      method: 'HEAD',
+    });
+
+    this.bg = result.url;
+  }
 }
