@@ -4,6 +4,7 @@ import {TodoService} from "../../shared/service/todo.service";
 import {Todo} from "../../shared/model/todo.model";
 import {NgForm} from "@angular/forms";
 import {Note} from "../../shared/model/note.model";
+import {NotificationService} from "../../shared/service/notification.service";
 
 @Component({
   selector: 'app-edit-todo',
@@ -19,7 +20,8 @@ export class EditTodoComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private todoService: TodoService,
-    private router: Router
+    private router: Router,
+    private notificationService: NotificationService
   ) { }
 
   ngOnInit() {
@@ -35,5 +37,6 @@ export class EditTodoComponent implements OnInit {
     }
     this.todoService.updateTodo(this.todo.id, form.value);
     this.router.navigateByUrl("/todos");
+    this.notificationService.show("Todo Updated!");
   }
 }
