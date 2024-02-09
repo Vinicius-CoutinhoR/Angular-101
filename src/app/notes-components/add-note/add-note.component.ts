@@ -4,6 +4,7 @@ import {Note} from "../../shared/model/note.model";
 import {NoteService} from "../../shared/service/note.service";
 import {Router} from "@angular/router";
 import {error} from "@angular/compiler-cli/src/transformers/util";
+import {NotificationService} from "../../shared/service/notification.service";
 
 @Component({
   selector: 'app-add-note',
@@ -13,7 +14,10 @@ import {error} from "@angular/compiler-cli/src/transformers/util";
 export class AddNoteComponent implements OnInit {
 
   showValidationErrors: boolean = false;
-  constructor(private noteService: NoteService, private router: Router) { }
+  constructor(
+    private noteService: NoteService,
+    private router: Router,
+    private notificationService: NotificationService) { }
 
   ngOnInit() { }
 
@@ -27,6 +31,7 @@ export class AddNoteComponent implements OnInit {
 
 
     this.noteService.addNote(note);
-    this.router.navigateByUrl("/notes")
+    this.router.navigateByUrl("/notes");
+    this.notificationService.show('Note added!');
   }
 }
